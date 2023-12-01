@@ -1,11 +1,16 @@
-import { Button } from '@/components/ui/button';
+'use client';
 
-export default function Home() {
+import { Modal } from '@/components/ui/modal';
+import { UserButton } from '@clerk/nextjs';
+
+const SetupPage = () => {
   return (
     <div className='p-4'>
-      <Button size='sm' variant='destructive'>
-        Click me
-      </Button>
+      <Modal title='Test' description='Test Desc' isOpen onClose={() => {}}>
+        Children
+      </Modal>
     </div>
   );
-}
+};
+
+export default SetupPage;
