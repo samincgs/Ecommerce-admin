@@ -1,10 +1,12 @@
 # E-commerce Admin Application
 
-A Restaurant Food Delivery service that provides a comprehensive, mobile-responsive platform with intuitive user design. This nextjs website is made to help improve my design skills and make more fluid and well-constructe website designs.
+An E-commerce application has been developed using Next.js 14 and the App Router. This project incorporates Typescript for enhanced security and utilizes Tailwind for styling. For the database, it leverages PlanetScale and Prisma with MySQL. Clerk is employed for authentication.
+
+The website enables users to create their own stores and sell designated products. It supports multiple store creations, features a shopping cart, and facilitates payments through Stripe. Additionally, users can create products, and the application displays them with a billboard.
 
 ### Frameworks/Libraries Used
 
-- Next.js 13 (App Router)
+- Next.js 14 (App Router)
 - React
 - TypeScript
 - TailwindCSS
@@ -12,7 +14,6 @@ A Restaurant Food Delivery service that provides a comprehensive, mobile-respons
 - Clerk
 - PlanetScale
 - Prisma
-- MongoDB
 - Next Auth
 
 ### Credits
