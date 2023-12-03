@@ -18,6 +18,9 @@ import {
   FormMessage,
 } from './ui/form';
 import { Input } from '@/components/ui/input';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { useParams, useRouter } from 'next/navigation';
 
 interface SettingsFormProps {
   initialData: Store;
@@ -30,6 +33,8 @@ const formSchema = z.object({
 const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const params = useParams();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,7 +42,17 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // DO SOMETHING
+    try {
+      setLoading(true);
+
+      await axios.patch(`/api/stores/${params.storeId}`, values);
+      router.refresh();
+      toast.success('Store updated.');
+    } catch (error) {
+      toast.error('Something went wrong.');
+    } finally {
+      setLoading(false);
+    }
 
     console.log(values);
   };
@@ -46,7 +61,12 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
     <>
       <div className=' flex items-center justify-between'>
         <Heading title='Settings' description='Manage store preferences' />
-        <Button variant='destructive' size='sm' onClick={() => {}}>
+        <Button
+          variant='destructive'
+          disabled={loading}
+          size='sm'
+          onClick={() => setOpen(true)}
+        >
           <Trash className='h-4 w-4' />
         </Button>
       </div>
@@ -75,7 +95,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button disabled={loading} className='' type='submit'>
+          <Button disabled={loading} className='ml-auto' type='submit'>
             Save Changes
           </Button>
         </form>
