@@ -16,6 +16,7 @@ The website enables users to create their own stores and sell designated product
 - Clerk
 - PlanetScale
 - Prisma
+- MySQL
 - Next Auth
 
 ### Credits
