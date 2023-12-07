@@ -67,7 +67,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
       }
 
       router.refresh();
-      router.push(`/${params.storeId}/billboards`);
+      window.location.assign(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
       toast.error('Something went wrong.');
@@ -83,8 +83,8 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
       await axios.delete(
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
-      router.refresh();
       router.push('/');
+      router.refresh();
       toast.success('Billboard deleted.');
     } catch (error) {
       toast.error(
