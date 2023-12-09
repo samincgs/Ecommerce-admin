@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Copy, Edit, MoreHorizontal, Trash2 } from 'lucide-react';
 
-import { BillboardColumn } from '@/components/columns';
+import { BillboardColumn } from '@/app/(dashboard)/[storeId]/billboards/components/columns';
 import {
   DropdownMenu,
   DropdownMenuContent,
