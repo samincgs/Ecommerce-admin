@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Copy, Edit, MoreHorizontal, Trash2 } from 'lucide-react';
 
-import { BillboardColumn } from '@/app/(dashboard)/[storeId]/billboards/components/columns';
+import { CategoryColumn } from './columns';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +20,7 @@ import axios from 'axios';
 import AlertModal from '@/components/modals/alert-modal';
 
 interface CellActionProps {
-  data: BillboardColumn; //added array
+  data: CategoryColumn; //added array
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -32,18 +32,20 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success('Billboard id copied to clipboard.');
+    toast.success('Category id copied to clipboard.');
   };
 
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
 
       router.refresh();
-      toast.success('Billboard deleted.');
+      toast.success('Category deleted.');
     } catch (error) {
-      toast.error('There was an error deleting the billboard.');
+      toast.error(
+        'Make sure you removed all products using this category first.'
+      );
     } finally {
       setLoading(false);
       setOpen(false);
@@ -74,7 +76,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() =>
-              router.push(`/${params.storeId}/billboards/${data.id}`)
+              router.push(`/${params.storeId}/categories/${data.id}`)
             }
           >
             <Edit className='w-4 h-4 mr-2' />

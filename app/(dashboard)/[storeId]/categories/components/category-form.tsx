@@ -91,7 +91,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
       await axios.delete(
         `/api/${params.storeId}/categories/${params.categoryId}`
       );
-      router.push('/');
+      router.push(`/${params.storeId}/categories`);
       router.refresh();
       toast.success('Category deleted.');
     } catch (error) {
