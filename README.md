@@ -18,6 +18,7 @@ The website enables users to create their own stores and sell designated product
 - Prisma
 - MySQL
 - Next Auth
+- Cloudinary
 
 ### Credits
 
