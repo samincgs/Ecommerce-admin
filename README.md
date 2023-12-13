@@ -1,5 +1,7 @@
 # E-commerce Admin Application
 
+### (Ecommerce Store & Admin)
+
 [IN PROGRESS]
 
 An E-commerce application has been developed using Next.js 14 and the App Router. This project incorporates Typescript for enhanced security and utilizes Tailwind for styling. For the database, it leverages PlanetScale and Prisma with MySQL. Clerk is employed for authentication.
